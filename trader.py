@@ -40,19 +40,25 @@ def main():
                 print("Market is closed. Waiting...")
 
             if market_status.is_open:
-                # Replace 'AAPL' with the symbol you want to trade
-                symbol = 'AAPL'
+                manual_trade = input("Do you want to manually trade? (y/n): ")
 
-                # Set the quantity, side, order type, and time in force according to your strategy
-                qty = 1
-                side = 'buy'
-                order_type = 'market'
-                time_in_force = 'gtc'
+                if manual_trade == 'y':
+                    symbol = input("Enter the symbol you want to trade: ")
 
-                # Place an order
-                order = place_order(symbol, qty, side, order_type, time_in_force)
+                    # Set the quantity, side, order type, and time in force according to your strategy
+                    qty = input("Enter the quantity: ")
+                    side = 'buy'
+                    order_type = 'market'
+                    time_in_force = 'gtc'
 
-                print(f"Order placed: {order}")
+                    # Place an order
+                    order = place_order(symbol, qty, side, order_type, time_in_force)
+
+                    print(f"Order placed: {order}")
+                
+                else:
+                    # do trading strategy here
+                    print("Trading strategy goes here")
             else:
                 print("Market closed or trading is blocked. Waiting...")
             
